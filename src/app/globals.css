@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+  
+  /* Brand Colors based on your documentation */
+  --forest-green: #2D5A27;
+  --meadow-green: #5B8C5A;
+  --earth-brown: #8B7355;
+  --sun-gold: #E6B325;
+  --corporate-navy: #1C2B3D;
+  --clean-white: #FFFFFF;
+  --light-gray: #F5F7FA;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+/* Custom CSS classes for brand colors */
+.forest-green {
+  color: var(--forest-green);
+}
+
+.meadow-green {
+  color: var(--meadow-green);
+}
+
+.earth-brown {
+  color: var(--earth-brown);
+}
+
+.sun-gold {
+  color: var(--sun-gold);
+}
+
+.corporate-navy {
+  color: var(--corporate-navy);
+}
+
+.bg-forest-green {
+  background-color: var(--forest-green);
+}
+
+.bg-meadow-green {
+  background-color: var(--meadow-green);
+}
+
+.bg-earth-brown {
+  background-color: var(--earth-brown);
+}
+
+.bg-sun-gold {
+  background-color: var(--sun-gold);
+}
+
+.bg-corporate-navy {
+  background-color: var(--corporate-navy);
+}
+
+.bg-light-gray {
+  background-color: var(--light-gray);
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-down {
+  animation: fadeInDown 1s ease-out forwards;
+  opacity: 0;
+  animation-delay: 0.2s;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 1s ease-out forwards;
+  opacity: 0;
+  animation-delay: 0.4s;
+}
+
+/* Additional utility classes */
+.shadow-custom {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.transition-all {
+  transition-property: all;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}

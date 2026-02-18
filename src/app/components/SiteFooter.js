@@ -1,0 +1,70 @@
+"use client";
+
+import Link from 'next/link';
+
+export default function SiteFooter() {
+  return (
+    <footer className="bg-corporate-navy text-white py-12">
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <h3 className="text-xl font-bold mb-4">ZUMA AGRO ALLIED INTEGRATED LIMITED</h3>
+            <p className="text-gray-300">
+              Transforming Agriculture Through Strategic Integration
+            </p>
+          </div>
+          <div>
+            <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
+            <ul className="space-y-2">
+              <li><Link href="/" className="text-gray-300 hover:text-sun-gold transition-colors">Home</Link></li>
+              <li><Link href="/about" className="text-gray-300 hover:text-sun-gold transition-colors">About Us</Link></li>
+              <li><Link href="/operations" className="text-gray-300 hover:text-sun-gold transition-colors">Operations</Link></li>
+              <li><Link href="/sustainability" className="text-gray-300 hover:text-sun-gold transition-colors">Sustainability</Link></li>
+              <li><Link href="/investors" className="text-gray-300 hover:text-sun-gold transition-colors">Investors</Link></li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-lg font-semibold mb-4">Contact</h4>
+            <address className="not-italic text-gray-300">
+              <p>Headquarters: [Address]</p>
+              <p>Email: info@zumaagro.com</p>
+              <p>Phone: +234 XXX XXX XXXX</p>
+              <p className="mt-2">Emergency: [Security Contact]</p>
+            </address>
+          </div>
+          <div>
+            <h4 className="text-lg font-semibold mb-4">Follow Us</h4>
+            <div className="flex space-x-4">
+              <a href="#" className="text-gray-300 hover:text-sun-gold text-2xl transition-colors" aria-label="LinkedIn">💼</a>
+              <a href="#" className="text-gray-300 hover:text-sun-gold text-2xl transition-colors" aria-label="Twitter">📱</a>
+              <a href="#" className="text-gray-300 hover:text-sun-gold text-2xl transition-colors" aria-label="YouTube">▶️</a>
+              <a href="#" className="text-gray-300 hover:text-sun-gold text-2xl transition-colors" aria-label="Instagram">📸</a>
+            </div>
+            <div className="mt-6">
+              <h5 className="text-md font-semibold mb-2">Newsletter</h5>
+              <div className="flex">
+                <input 
+                  type="email" 
+                  placeholder="Your email" 
+                  className="px-3 py-2 text-gray-800 rounded-l focus:outline-none w-full"
+                />
+                <button className="bg-sun-gold hover:bg-forest-green text-corporate-navy font-bold py-2 px-4 rounded-r transition-colors">
+                  Subscribe
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+          <p>© 2026 Zuma Agro Allied Integrated Limited. All Rights Reserved.</p>
+          <div className="mt-2">
+            <Link href="/privacy" className="hover:text-sun-gold mx-2 transition-colors">Privacy Policy</Link>
+            <Link href="/terms" className="hover:text-sun-gold mx-2 transition-colors">Terms of Use</Link>
+            <Link href="/esg" className="hover:text-sun-gold mx-2 transition-colors">ESG Reports</Link>
+            <Link href="/supplier-portal" className="hover:text-sun-gold mx-2 transition-colors">Supplier Portal</Link>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
