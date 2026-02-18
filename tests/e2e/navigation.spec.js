@@ -13,6 +13,7 @@ test.describe('Site Navigation', () => {
       { name: 'About', url: '/about', heading: 'About Zuma Agro' },
       { name: 'Operations', url: '/operations', heading: 'Operations Hub' },
       { name: 'Model', url: '/model', heading: 'Integrated Model' },
+      { name: 'Markets', url: '/markets', heading: 'Markets & Export' },
       { name: 'Sustainability', url: '/sustainability', heading: 'Sustainability & ESG' },
       { name: 'Investors', url: '/investors', heading: 'Investor Relations' },
       { name: 'Media', url: '/media', heading: 'Media Center' },

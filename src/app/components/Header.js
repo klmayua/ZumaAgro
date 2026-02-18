@@ -16,7 +16,7 @@ export default function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8" role="menubar">
+          <div className="hidden md:flex items-center space-x-6" role="menubar">
             <Link href="/" className="text-corporate-navy hover:text-forest-green font-medium transition-colors" role="menuitem">
               Home
             </Link>
@@ -28,6 +28,9 @@ export default function Header() {
             </Link>
             <Link href="/model" className="text-corporate-navy hover:text-forest-green font-medium transition-colors" role="menuitem">
               Model
+            </Link>
+            <Link href="/markets" className="text-corporate-navy hover:text-forest-green font-medium transition-colors" role="menuitem">
+              Markets
             </Link>
             <Link href="/sustainability" className="text-corporate-navy hover:text-forest-green font-medium transition-colors" role="menuitem">
               Sustainability
@@ -68,7 +71,7 @@ export default function Header() {
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <div id="mobile-menu" className="md:hidden py-4 border-t border-gray-200">
-            <div className="flex flex-col space-y-4">
+            <div className="flex flex-col space-y-3">
               <Link href="/" className="text-corporate-navy hover:text-forest-green font-medium transition-colors" onClick={() => setIsMenuOpen(false)}>
                 Home
               </Link>
@@ -80,6 +83,9 @@ export default function Header() {
               </Link>
               <Link href="/model" className="text-corporate-navy hover:text-forest-green font-medium transition-colors" onClick={() => setIsMenuOpen(false)}>
                 Model
+              </Link>
+              <Link href="/markets" className="text-corporate-navy hover:text-forest-green font-medium transition-colors" onClick={() => setIsMenuOpen(false)}>
+                Markets
               </Link>
               <Link href="/sustainability" className="text-corporate-navy hover:text-forest-green font-medium transition-colors" onClick={() => setIsMenuOpen(false)}>
                 Sustainability
