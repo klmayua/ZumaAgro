@@ -1,0 +1,52 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[functions]
+  directory = "out_functions"
+
+[dev]
+  command = "npm run dev"
+  port = 3000
+  targetPort = 3000
+
+[[redirects]]
+  from = "/about"
+  to = "/about"
+  status = 200
+
+[[redirects]]
+  from = "/operations"
+  to = "/operations"
+  status = 200
+
+[[redirects]]
+  from = "/sustainability"
+  to = "/sustainability"
+  status = 200
+
+[[redirects]]
+  from = "/investors"
+  to = "/investors"
+  status = 200
+
+[[redirects]]
+  from = "/contact"
+  to = "/contact"
+  status = 200
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
