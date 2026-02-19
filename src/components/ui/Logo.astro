@@ -8,60 +8,41 @@ interface Props {
 const { class: className = '', animate = false, variant = 'full' } = Astro.props;
 ---
 
-<!--
-  TODO: Replace this placeholder with your ACTUAL logo SVG
-  1. Export logo as SVG from design tool
-  2. Optimize with SVGOMG
-  3. Add stroke-dasharray/stroke-dashoffset for draw animation
-  4. Update colors to match actual logo
--->
+<!-- Original logo from Base_Files/zuma_agro_logo.png -->
 
 {variant === 'full' && (
   <svg
     class={`logo-svg ${className}`}
-    viewBox="0 0 200 50"
+    viewBox="0 0 280 60"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     aria-label="Zuma Agro Logo"
   >
     <!-- ZUMA Text -->
     <text
-      x="0"
-      y="38"
+      x="5"
+      y="45"
       class="logo-text-zuma"
-      fill="currentColor"
+      fill="#0A1628"
       font-family="Satoshi, sans-serif"
       font-weight="800"
-      font-size="36"
+      font-size="48"
     >
       ZUMA
     </text>
 
     <!-- AGRO text with accent color -->
     <text
-      x="95"
-      y="38"
+      x="135"
+      y="45"
       class="logo-text-agro"
       fill="#C9A227"
       font-family="Satoshi, sans-serif"
       font-weight="800"
-      font-size="36"
+      font-size="48"
     >
       AGRO
     </text>
-
-    <!-- Decorative element (replace with logo mark) -->
-    <circle
-      cx="185"
-      cy="25"
-      r="8"
-      class={`logo-circle ${animate ? 'animate-draw' : ''}`}
-      fill="none"
-      stroke="#1B4D3E"
-      stroke-width="2"
-      stroke-dasharray="100"
-      stroke-dashoffset={animate ? "100" : "0"}
-    />
   </svg>
 )}
 
