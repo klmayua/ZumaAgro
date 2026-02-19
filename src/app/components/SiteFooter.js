@@ -44,7 +44,7 @@ export default function SiteFooter() {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <h3 className="text-xl font-bold mb-4">ZUMA AGRO ALLIED INTEGRATED LIMITED</h3>
+            <img src="/logo.png" alt="Zuma Agro" className="h-12 w-auto mb-4 opacity-70" />
             <p className="text-gray-300">
               Transforming Agriculture Through Strategic Integration
             </p>

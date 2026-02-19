@@ -11,8 +11,8 @@ export default function Header() {
     <header className="bg-white shadow-md" role="banner">
       <div className="container mx-auto px-4">
         <nav className="flex items-center justify-between py-4" role="navigation" aria-label="Main navigation">
-          <Link href="/" className="text-2xl font-bold text-corporate-navy" aria-label="Zuma Agro Home">
-            ZUMA<span className="text-forest-green">AGRO</span>
+          <Link href="/" className="flex-shrink-0" aria-label="Zuma Agro Home">
+            <img src="/logo.png" alt="Zuma Agro" className="h-12 w-auto" />
           </Link>
 
           {/* Desktop Navigation */}
