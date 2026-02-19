@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import Section from '../components/ui/Section.astro';
+import Breadcrumb from '../components/ui/Breadcrumb.astro';
+---
+
+<BaseLayout title="Terms of Use | Zuma Agro">
+  <Header />
+
+  <main>
+    <Section>
+      <Breadcrumb items={[{ label: 'Terms of Use' }]} />
+
+      <div class="max-w-3xl mx-auto mt-8">
+        <h1 class="text-4xl md:text-5xl font-bold text-zuma-navy mb-6">Terms of Use</h1>
+        <p class="text-zuma-navy/70 mb-12">Last updated: November 2024</p>
+
+        <div class="prose prose-lg max-w-none text-zuma-navy/70">
+          <p class="mb-6">
+            Welcome to the Zuma Agro website. By accessing or using this website, you agree to be bound by these Terms of Use.
+          </p>
+
+          <h2 class="text-2xl font-bold text-zuma-navy mt-8 mb-4">1. Acceptance of Terms</h2>
+          <p class="mb-6">
+            By accessing this website, you acknowledge that you have read, understood, and agree to be bound by these Terms of Use
+            and our Privacy Policy. If you do not agree with any part of these terms, please do not use our website.
+          </p>
+
+          <h2 class="text-2xl font-bold text-zuma-navy mt-8 mb-4">2. Use of Website</h2>
+          <p class="mb-6">
+            You agree to use this website only for lawful purposes and in a manner that does not infringe the rights of others
+            or restrict their use and enjoyment of the website. Prohibited behavior includes harassing or causing distress to others,
+            transmitting obscene or offensive content, or disrupting the normal flow of dialogue.
+          </p>
+
+          <h2 class="text-2xl font-bold text-zuma-navy mt-8 mb-4">3. Intellectual Property</h2>
+          <p class="mb-6">
+            All content on this website, including text, graphics, logos, images, and software, is the property of Zuma Agro
+            or its content suppliers and is protected by copyright and other intellectual property laws. You may not reproduce,
+            distribute, or create derivative works without our express written permission.
+          </p>
+
+          <h2 class="text-2xl font-bold text-zuma-navy mt-8 mb-4">4. Disclaimer</h2>
+          <p class="mb-6">
+            The information on this website is provided "as is" without warranties of any kind. While we strive to keep
+            information accurate and up-to-date, we make no representations about completeness, reliability, or availability.
+          </p>
+
+          <h2 class="text-2xl font-bold text-zuma-navy mt-8 mb-4">5. Limitation of Liability</h2>
+          <p class="mb-6">
+            Zuma Agro shall not be liable for any direct, indirect, incidental, consequential, or punitive damages arising
+            from your use of or inability to use this website.
+          </p>
+
+          <h2 class="text-2xl font-bold text-zuma-navy mt-8 mb-4">6. Governing Law</h2>
+          <p class="mb-6">
+            These Terms of Use shall be governed by and construed in accordance with the laws of the Federal Republic of Nigeria.
+          </p>
+
+          <h2 class="text-2xl font-bold text-zuma-navy mt-8 mb-4">7. Changes to Terms</h2>
+          <p class="mb-6">
+            We reserve the right to modify these terms at any time. Continued use of the website after changes constitutes acceptance of the new terms.
+          </p>
+
+          <h2 class="text-2xl font-bold text-zuma-navy mt-8 mb-4">8. Contact Information</h2>
+          <p class="mb-6">
+            For questions about these Terms of Use, please contact us at legal@zumaagro.com.
+          </p>
+        </div>
+      </div>
+    </Section>
+  </main>
+
+  <Footer />
+</BaseLayout>

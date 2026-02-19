@@ -1,0 +1,161 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import Section from '../components/ui/Section.astro';
+import Breadcrumb from '../components/ui/Breadcrumb.astro';
+import GlassCard from '../components/ui/GlassCard.astro';
+import Button from '../components/ui/Button.astro';
+
+const categories = ['All', 'News', 'Events', 'Press Releases'];
+
+const articles = [
+  {
+    title: 'Zuma Agro Announces $100M Expansion Plan',
+    excerpt: 'Company to double cattle capacity and expand grain operations across Northern Nigeria.',
+    category: 'Press Releases',
+    date: '2024-11-15',
+    image: '/images/media-1.jpg',
+    featured: true,
+  },
+  {
+    title: 'Sustainability Report 2024: Key Highlights',
+    excerpt: 'Our ESG initiatives have resulted in 30% reduction in carbon footprint.',
+    category: 'News',
+    date: '2024-10-28',
+    image: '/images/media-2.jpg',
+  },
+  {
+    title: 'Agriculture Summit 2024: CEO Keynote',
+    excerpt: 'Dr. Amina Bello discusses the future of integrated agriculture in Africa.',
+    category: 'Events',
+    date: '2024-10-10',
+    image: '/images/media-3.jpg',
+  },
+  {
+    title: 'Partnership with Nigerian Export Council',
+    excerpt: 'Strategic agreement to boost agricultural exports to Middle East markets.',
+    category: 'Press Releases',
+    date: '2024-09-22',
+    image: '/images/media-4.jpg',
+  },
+  {
+    title: 'New Processing Facility Commissioned',
+    excerpt: 'State-of-the-art plant increases daily processing capacity to 100 tons.',
+    category: 'News',
+    date: '2024-08-15',
+    image: '/images/media-5.jpg',
+  },
+  {
+    title: 'Youth in Agriculture Workshop',
+    excerpt: 'Training 500 young Nigerians in modern agricultural practices.',
+    category: 'Events',
+    date: '2024-07-30',
+    image: '/images/media-6.jpg',
+  },
+];
+---
+
+<BaseLayout title="Media Center | Zuma Agro">
+  <Header />
+
+  <main>
+    <!-- Hero -->
+    <section class="relative h-[40vh] flex items-center bg-zuma-navy">
+      <div class="absolute inset-0">
+        <img src="/images/media-hero.jpg" alt="Media Center" class="w-full h-full object-cover opacity-40" />
+      </div>
+      <div class="relative container mx-auto px-4 sm:px-6 lg:px-8">
+        <Breadcrumb items={[{ label: 'Media Center' }]} />
+        <h1 class="text-5xl md:text-6xl font-bold text-white mt-8">
+          Media <span class="text-zuma-gold">Center</span>
+        </h1>
+      </div>
+    </section>
+
+    <!-- Featured Article -->
+    {articles.filter(a => a.featured).map(article => (
+      <Section>
+        <div class="relative rounded-2xl overflow-hidden">
+          <img src={article.image} alt={article.title} class="w-full h-[400px] object-cover" />
+          <div class="absolute inset-0 bg-gradient-to-t from-zuma-navy via-zuma-navy/50 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-8">
+            <span class="inline-block px-3 py-1 bg-zuma-gold text-zuma-navy text-sm font-semibold rounded-full mb-4">
+              Featured
+            </span>
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">{article.title}</h2>
+            <p class="text-white/80 text-lg max-w-2xl mb-6">{article.excerpt}</p>
+            <Button href="#" variant="primary">Read Full Story</Button>
+          </div>
+        </div>
+      </Section>
+    ))}
+
+    <!-- Articles Grid -->
+    <Section>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {articles.filter(a => !a.featured).map((article) => (
+          <GlassCard class="group overflow-hidden p-0">
+            <div class="relative h-48 overflow-hidden">
+              <img
+                src={article.image}
+                alt={article.title}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div class="absolute top-4 left-4">
+                <span class="px-3 py-1 bg-white/90 text-zuma-navy text-xs font-semibold rounded-full">
+                  {article.category}
+                </span>
+              </div>
+            </div>
+            <div class="p-6">
+              <p class="text-zuma-navy/50 text-sm mb-2">{new Date(article.date).toLocaleDateString('en-NG', { dateStyle: 'long' })}</p>
+              <h3 class="text-xl font-bold text-zuma-navy mb-3 group-hover:text-zuma-gold transition-colors line-clamp-2">
+                {article.title}
+              </h3>
+              <p class="text-zuma-navy/70 text-sm line-clamp-3">{article.excerpt}</p>
+            </div>
+          </GlassCard>
+        ))}
+      </div>
+
+      <div class="text-center mt-12">
+        <Button href="#" variant="outline">Load More Articles</Button>
+      </div>
+    </Section>
+
+    <!-- Press Kit -->
+    <Section class="bg-zuma-navy text-white">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl font-bold mb-4">Press Kit</h2>
+          <p class="text-white/70 mb-8">
+            Download official logos, brand guidelines, high-resolution images,
+            and executive bios for media use.
+          </p>
+          <div class="space-y-4">
+            <div class="flex items-center justify-between p-4 bg-white/10 rounded-xl">
+              <span>Brand Guidelines</span>
+              <Button href="#" variant="outline" size="sm" class="border-white/30 text-white">Download</Button>
+            </div>
+            <div class="flex items-center justify-between p-4 bg-white/10 rounded-xl">
+              <span>Logo Pack (PNG, SVG, EPS)</span>
+              <Button href="#" variant="outline" size="sm" class="border-white/30 text-white">Download</Button>
+            </div>
+            <div class="flex items-center justify-between p-4 bg-white/10 rounded-xl">
+              <span>Executive Photos</span>
+              <Button href="#" variant="outline" size="sm" class="border-white/30 text-white">Download</Button>
+            </div>
+          </div>
+        </div>
+        <div class="text-center">
+          <div class="text-lg mb-4">Media Contact</div>
+          <p class="text-2xl font-bold text-zuma-gold mb-2">media@zumaagro.com</p>
+          <p class="text-white/70">+234 800 ZUMA AGRO</p>
+        </div>
+      </div>
+    </Section>
+  </main>
+
+  <Footer />
+</BaseLayout>

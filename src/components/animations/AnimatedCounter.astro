@@ -1,0 +1,51 @@
+---
+interface Props {
+  target: number;
+  suffix?: string;
+  prefix?: string;
+  duration?: number;
+  class?: string;
+}
+
+const {
+  target,
+  suffix = '',
+  prefix = '',
+  duration = 2,
+  class: className = '',
+} = Astro.props;
+---
+
+<span class={`counter ${className}`} data-target={target} data-duration={duration}>
+  {prefix}0{suffix}
+</span>
+
+<script>
+  import { gsap } from 'gsap'
+  import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+  gsap.registerPlugin(ScrollTrigger)
+
+  document.querySelectorAll('.counter').forEach((counter) => {
+    const target = parseInt(counter.dataset.target)
+    const duration = parseFloat(counter.dataset.duration) || 2
+
+    const obj = { value: 0 }
+
+    ScrollTrigger.create({
+      trigger: counter,
+      start: 'top 80%',
+      onEnter: () => {
+        gsap.to(obj, {
+          value: target,
+          duration,
+          ease: 'power2.out',
+          onUpdate: () => {
+            counter.textContent = counter.textContent.replace(/[\d,]+/, Math.floor(obj.value).toLocaleString())
+          },
+        })
+      },
+      once: true,
+    })
+  })
+</script>

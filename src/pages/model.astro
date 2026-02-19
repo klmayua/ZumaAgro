@@ -1,0 +1,194 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import Section from '../components/ui/Section.astro';
+import Breadcrumb from '../components/ui/Breadcrumb.astro';
+import GlassCard from '../components/ui/GlassCard.astro';
+
+const phases = [
+  {
+    number: '01',
+    title: 'Land Acquisition',
+    description: 'Strategic acquisition of fertile land with access to water and infrastructure.',
+    details: ['Due diligence', 'Legal compliance', 'Environmental assessment', 'Community engagement'],
+    icon: '🏞️',
+  },
+  {
+    number: '02',
+    title: 'Breeding Program',
+    description: 'Selection and development of high-quality livestock breeds adapted to local conditions.',
+    details: ['Genetic selection', 'Artificial insemination', 'Pedigree tracking', 'Performance monitoring'],
+    icon: '🧬',
+  },
+  {
+    number: '03',
+    title: 'Feed Production',
+    description: 'Cultivation and processing of nutritious feed for optimal livestock health.',
+    details: ['Crop cultivation', 'Feed formulation', 'Quality testing', 'Storage management'],
+    icon: '🌾',
+  },
+  {
+    number: '04',
+    title: 'Ranching Operations',
+    description: 'Day-to-day management of livestock with focus on health and welfare.',
+    details: ['Herd management', 'Veterinary care', 'Grazing rotation', 'Record keeping'],
+    icon: '🐄',
+  },
+  {
+    number: '05',
+    title: 'Processing',
+    description: 'Conversion of raw agricultural products into market-ready goods.',
+    details: ['Slaughtering', 'Packaging', 'Labeling', 'Cold storage'],
+    icon: '🏭',
+  },
+  {
+    number: '06',
+    title: 'Quality Control',
+    description: 'Rigorous testing and inspection to ensure product excellence.',
+    details: ['Laboratory testing', 'Inspection protocols', 'Certification', 'Traceability'],
+    icon: '✅',
+  },
+  {
+    number: '07',
+    title: 'Distribution',
+    description: 'Efficient logistics network delivering products to markets.',
+    details: ['Fleet management', 'Route optimization', 'Cold chain', 'Delivery tracking'],
+    icon: '🚛',
+  },
+  {
+    number: '08',
+    title: 'Export Operations',
+    description: 'International trade compliance and overseas market access.',
+    details: ['Documentation', 'Customs clearance', 'Shipping logistics', 'Market compliance'],
+    icon: '🌍',
+  },
+  {
+    number: '09',
+    title: 'Market Delivery',
+    description: 'Final delivery to retailers, restaurants, and end consumers.',
+    details: ['Retail partnerships', 'Direct sales', 'Customer service', 'Feedback collection'],
+    icon: '🏪',
+  },
+];
+---
+
+<BaseLayout title="Integrated Model | Zuma Agro">
+  <Header />
+
+  <main>
+    <!-- Hero -->
+    <section class="relative h-[50vh] flex items-center bg-zuma-navy">
+      <div class="absolute inset-0">
+        <img src="/images/model-hero.jpg" alt="Integrated Model" class="w-full h-full object-cover opacity-40" />
+      </div>
+      <div class="relative container mx-auto px-4 sm:px-6 lg:px-8">
+        <Breadcrumb items={[{ label: 'Integrated Model' }]} />
+        <h1 class="text-5xl md:text-6xl font-bold text-white mt-8">
+          The 9-Phase <span class="text-zuma-gold">Integration</span>
+        </h1>
+        <p class="text-xl text-white/80 max-w-2xl mt-6">
+          Our proprietary framework ensures complete control, quality, and traceability
+          across the entire agricultural value chain.
+        </p>
+      </div>
+    </section>
+
+    <!-- Model Overview -->
+    <Section>
+      <div class="grid lg:grid-cols-3 gap-8 mb-16">
+        <GlassCard class="text-center">
+          <div class="text-4xl font-bold text-zuma-gold mb-2">100%</div>
+          <p class="text-zuma-navy/70">Vertical Integration</p>
+        </GlassCard>
+        <GlassCard class="text-center">
+          <div class="text-4xl font-bold text-zuma-gold mb-2">End-to-End</div>
+          <p class="text-zuma-navy/70">Traceability</p>
+        </GlassCard>
+        <GlassCard class="text-center">
+          <div class="text-4xl font-bold text-zuma-gold mb-2">Premium</div>
+          <p class="text-zuma-navy/70">Quality Assurance</p>
+        </GlassCard>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        {phases.map((phase, index) => (
+          <div class="group relative">
+            <GlassCard class="h-full hover:shadow-xl transition-all cursor-pointer">
+              <div class="flex items-start justify-between mb-4">
+                <div class="text-4xl">{phase.icon}</div>
+                <span class="text-3xl font-bold text-zuma-gold/30">{phase.number}</span>
+              </div>
+              <h3 class="text-xl font-bold text-zuma-navy mb-2 group-hover:text-zuma-gold transition-colors">
+                {phase.title}
+              </h3>
+              <p class="text-zuma-navy/70 text-sm mb-4">{phase.description}</p>
+
+              <div class="mt-4 pt-4 border-t border-zuma-navy/10">
+                <ul class="space-y-2">
+                  {phase.details.map((detail) => (
+                    <li class="flex items-center text-sm text-zuma-navy/60">
+                      <div class="w-1.5 h-1.5 bg-zuma-gold rounded-full mr-2"></div>
+                      {detail}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </GlassCard>
+          </div>
+        ))}
+      </div>
+    </Section>
+
+    <!-- Benefits -->
+    <Section class="bg-zuma-navy text-white">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <h2 class="text-4xl font-bold mb-6">
+            Why Integration <span class="text-zuma-gold">Matters</span>
+          </h2>
+          <div class="space-y-6">
+            <div class="flex items-start space-x-4">
+              <div class="w-12 h-12 rounded-full bg-zuma-gold/20 flex items-center justify-center flex-shrink-0">
+                <svg class="w-6 h-6 text-zuma-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">Quality Control</h3>
+                <p class="text-white/70">Every stage monitored and optimized for premium output.</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-4">
+              <div class="w-12 h-12 rounded-full bg-zuma-gold/20 flex items-center justify-center flex-shrink-0">
+                <svg class="w-6 h-6 text-zuma-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">Cost Efficiency</h3>
+                <p class="text-white/70">Eliminate middlemen and reduce operational costs.</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-4">
+              <div class="w-12 h-12 rounded-full bg-zuma-gold/20 flex items-center justify-center flex-shrink-0">
+                <svg class="w-6 h-6 text-zuma-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">Supply Security</h3>
+                <p class="text-white/70">Consistent supply regardless of market fluctuations.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="relative">
+          <img src="/images/model-benefits.jpg" alt="Integration Benefits" class="rounded-2xl shadow-xl" />
+        </div>
+      </div>
+    </Section>
+  </main>
+
+  <Footer />
+</BaseLayout>

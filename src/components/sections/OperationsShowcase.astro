@@ -1,0 +1,169 @@
+---
+import Section from '../ui/Section.astro';
+
+const operations = [
+  {
+    title: 'Livestock',
+    subtitle: 'Premium Cattle Ranching',
+    description: 'State-of-the-art breeding facilities managing over 50,000 head of cattle across multiple ranches.',
+    image: '/images/operations-livestock.jpg',
+    stats: [
+      { label: 'Cattle', value: '50K+' },
+      { label: 'Ranches', value: '12' },
+      { label: 'Breed Varieties', value: '8' },
+    ],
+  },
+  {
+    title: 'Grains',
+    subtitle: 'Sustainable Crop Production',
+    description: 'Large-scale cultivation of maize, sorghum, and soybeans using precision agriculture techniques.',
+    image: '/images/operations-grains.jpg',
+    stats: [
+      { label: 'Hectares', value: '10K+' },
+      { label: 'Annual Yield', value: '50K tons' },
+      { label: 'Crop Types', value: '6' },
+    ],
+  },
+  {
+    title: 'Apiculture',
+    subtitle: 'Honey Production & Pollination',
+    description: 'Sustainable beekeeping operations supporting crop pollination and premium honey production.',
+    image: '/images/operations-apiculture.jpg',
+    stats: [
+      { label: 'Hives', value: '5K+' },
+      { label: 'Honey Output', value: '100 tons' },
+      { label: 'Pollination', value: '2K ha' },
+    ],
+  },
+  {
+    title: 'Processing',
+    subtitle: 'Value-Added Facilities',
+    description: 'Modern processing plants ensuring quality from farm to market with full traceability.',
+    image: '/images/operations-processing.jpg',
+    stats: [
+      { label: 'Capacity', value: '100 tons/day' },
+      { label: 'Products', value: '20+' },
+      { label: 'Certifications', value: '5' },
+    ],
+  },
+];
+---
+
+<Section id="operations" container={false} class="bg-zuma-navy text-white overflow-hidden">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+    <span class="inline-block px-4 py-1 bg-zuma-gold/20 text-zuma-gold text-sm font-semibold rounded-full mb-4">
+      Our Operations
+    </span>
+    <h2 class="text-4xl md:text-5xl font-bold mb-4">
+      From Ranch to <span class="text-zuma-gold">Market</span>
+    </h2>
+    <p class="text-white/70 text-lg max-w-2xl">
+      Explore our integrated operations spanning the entire agricultural value chain.
+    </p>
+  </div>
+
+  <!-- Horizontal Scroll Container -->
+  <div class="horizontal-scroll-container relative h-screen" id="operations-scroll">
+    <div class="horizontal-scroll-wrapper flex h-full">
+      {operations.map((op, index) => (
+        <div class="horizontal-scroll-item flex-shrink-0 w-screen h-full relative">
+          <!-- Background Image -->
+          <div class="absolute inset-0">
+            <img
+              src={op.image}
+              alt={op.title}
+              class="w-full h-full object-cover opacity-60"
+            />
+            <div class="absolute inset-0 bg-gradient-to-r from-zuma-navy via-zuma-navy/80 to-transparent"></div>
+          </div>
+
+          <!-- Content -->
+          <div class="relative h-full flex items-center container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-xl">
+              <span class="text-zuma-gold font-semibold tracking-wider uppercase text-sm mb-2 block">
+                {op.subtitle}
+              </span>
+              <h3 class="text-5xl md:text-6xl font-bold mb-6">{op.title}</h3>
+              <p class="text-white/80 text-lg mb-8 leading-relaxed">
+                {op.description}
+              </p>
+
+              <!-- Stats -->
+              <div class="flex space-x-8 mb-8">
+                {op.stats.map((stat) => (
+                  <div>
+                    <p class="text-3xl font-bold text-zuma-gold">{stat.value}</p>
+                    <p class="text-white/60 text-sm">{stat.label}</p>
+                  </div>
+                ))}
+              </div>
+
+              <a
+                href={`/operations#${op.title.toLowerCase()}`}
+                class="inline-flex items-center text-zuma-gold font-semibold hover:underline"
+              >
+                Learn More
+                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Progress Indicator -->
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex space-x-2">
+      {operations.map((_, index) => (
+        <div
+          class="w-12 h-1 bg-white/20 rounded-full overflow-hidden progress-dot"
+          data-index={index}
+        >
+          <div class="h-full bg-zuma-gold w-0 transition-all duration-300"></div>
+        </div>
+      ))}
+    </div>
+  </div>
+</Section>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const container = document.getElementById('operations-scroll');
+  const wrapper = container.querySelector('.horizontal-scroll-wrapper');
+  const items = container.querySelectorAll('.horizontal-scroll-item');
+  const progressDots = container.querySelectorAll('.progress-dot');
+
+  const totalWidth = items.length * window.innerWidth;
+
+  gsap.to(wrapper, {
+    x: () => -(totalWidth - window.innerWidth),
+    ease: 'none',
+    scrollTrigger: {
+      trigger: container,
+      start: 'top top',
+      end: () => `+=${totalWidth}`,
+      scrub: 1,
+      pin: true,
+      anticipatePin: 1,
+      onUpdate: (self) => {
+        const progress = self.progress;
+        const activeIndex = Math.floor(progress * items.length);
+        progressDots.forEach((dot, i) => {
+          const bar = dot.querySelector('div');
+          if (i < activeIndex) {
+            bar.style.width = '100%';
+          } else if (i === activeIndex) {
+            bar.style.width = `${(progress * items.length - activeIndex) * 100}%`;
+          } else {
+            bar.style.width = '0%';
+          }
+        });
+      }
+    }
+  });
+</script>

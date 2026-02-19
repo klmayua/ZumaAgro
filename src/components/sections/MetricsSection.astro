@@ -1,0 +1,23 @@
+---
+import MetricCard from '../ui/MetricCard.astro';
+import Section from '../ui/Section.astro';
+
+const metrics = [
+  { label: 'Cattle Managed', value: 50000, suffix: '+', icon: '🐄' },
+  { label: 'Hectares Under Cultivation', value: 10000, suffix: '+', icon: '🌾' },
+  { label: 'Export Revenue', value: 100, suffix: 'M+', icon: '💰' },
+  { label: 'Jobs Created', value: 5000, suffix: '+', icon: '👥' },
+];
+---
+
+<Section class="relative -mt-20 z-20">
+  <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+    {metrics.map((metric, index) => (
+      <MetricCard
+        {...metric}
+        delay={index * 0.1}
+        class="transform hover:-translate-y-2 transition-transform duration-300"
+      />
+    ))}
+  </div>
+</Section>

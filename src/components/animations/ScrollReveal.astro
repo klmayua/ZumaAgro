@@ -1,0 +1,67 @@
+---
+interface Props {
+  animation?: 'fade-up' | 'fade-in' | 'slide-left' | 'slide-right' | 'scale';
+  delay?: number;
+  duration?: number;
+  class?: string;
+}
+
+const {
+  animation = 'fade-up',
+  delay = 0,
+  duration = 0.8,
+  class: className = '',
+} = Astro.props;
+
+const animationClasses = {
+  'fade-up': 'opacity-0 translate-y-10',
+  'fade-in': 'opacity-0',
+  'slide-left': 'opacity-0 -translate-x-10',
+  'slide-right': 'opacity-0 translate-x-10',
+  'scale': 'opacity-0 scale-95',
+};
+---
+
+<div
+  class={`scroll-reveal ${animationClasses[animation]} ${className}`}
+  data-animation={animation}
+  data-delay={delay}
+  data-duration={duration}
+>
+  <slot />
+</div>
+
+<script>
+  import { gsap } from 'gsap'
+  import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+  gsap.registerPlugin(ScrollTrigger)
+
+  const reveals = document.querySelectorAll('.scroll-reveal')
+
+  reveals.forEach((el) => {
+    const animation = el.dataset.animation
+    const delay = parseFloat(el.dataset.delay) || 0
+    const duration = parseFloat(el.dataset.duration) || 0.8
+
+    const animations = {
+      'fade-up': { y: 0, opacity: 1 },
+      'fade-in': { opacity: 1 },
+      'slide-left': { x: 0, opacity: 1 },
+      'slide-right': { x: 0, opacity: 1 },
+      'scale': { scale: 1, opacity: 1 },
+    }
+
+    gsap.to(el, {
+      ...animations[animation],
+      duration,
+      delay,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 85%',
+        toggleActions: 'play none none none',
+      },
+    })
+  })
+</script>

@@ -1,0 +1,52 @@
+---
+interface Props {
+  as?: 'h1' | 'h2' | 'h3' | 'p' | 'span';
+  class?: string;
+  stagger?: number;
+  duration?: number;
+}
+
+const {
+  as: Tag = 'h2',
+  class: className = '',
+  stagger = 0.03,
+  duration = 0.8,
+} = Astro.props;
+---
+
+<Tag class={`split-text ${className}`} data-stagger={stagger} data-duration={duration}>
+  <slot />
+</Tag>
+
+<script>
+  import { gsap } from 'gsap'
+  import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+  gsap.registerPlugin(ScrollTrigger)
+
+  document.querySelectorAll('.split-text').forEach((el) => {
+    const text = el.textContent
+    const stagger = parseFloat(el.dataset.stagger) || 0.03
+    const duration = parseFloat(el.dataset.duration) || 0.8
+
+    // Wrap each character in a span
+    el.innerHTML = text
+      .split('')
+      .map((char) => `<span class="char inline-block">${char === ' ' ? '&nbsp;' : char}</span>`)
+      .join('')
+
+    // Animate characters
+    gsap.from(el.querySelectorAll('.char'), {
+      y: 50,
+      opacity: 0,
+      duration,
+      stagger,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 80%',
+        toggleActions: 'play none none none',
+      },
+    })
+  })
+</script>

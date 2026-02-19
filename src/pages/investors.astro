@@ -1,0 +1,183 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import Section from '../components/ui/Section.astro';
+import Breadcrumb from '../components/ui/Breadcrumb.astro';
+import GlassCard from '../components/ui/GlassCard.astro';
+import Button from '../components/ui/Button.astro';
+
+const highlights = [
+  { label: 'Revenue Growth', value: '+45%', period: 'YoY' },
+  { label: 'Market Share', value: '12%', period: 'National' },
+  { label: 'Export Volume', value: '$50M', period: 'Annual' },
+  { label: 'Employee Count', value: '5,000+', period: 'Direct' },
+];
+
+const governance = [
+  { name: 'Alhaji Ibrahim Zuma', role: 'Chairman', bio: '30+ years in agribusiness' },
+  { name: 'Dr. Amina Bello', role: 'CEO', bio: 'Former McKinsey consultant' },
+  { name: 'Mrs. Ngozi Adeyemi', role: 'CFO', bio: 'Ex-CitiBank executive' },
+  { name: 'Engr. James Okonkwo', role: 'COO', bio: 'Agricultural engineer' },
+];
+
+const documents = [
+  { title: '2024 Annual Report', type: 'PDF', size: '4.2 MB', date: 'March 2024' },
+  { title: 'Q3 2024 Financial Results', type: 'PDF', size: '1.8 MB', date: 'October 2024' },
+  { title: 'Investor Presentation', type: 'PDF', size: '12.5 MB', date: 'November 2024' },
+  { title: 'ESG Report 2024', type: 'PDF', size: '8.1 MB', date: 'April 2024' },
+];
+---
+
+<BaseLayout title="Investor Relations | Zuma Agro">
+  <Header />
+
+  <main>
+    <!-- Hero -->
+    <section class="relative h-[50vh] flex items-center bg-zuma-navy">
+      <div class="absolute inset-0">
+        <img src="/images/investors-hero.jpg" alt="Investors" class="w-full h-full object-cover opacity-40" />
+      </div>
+      <div class="relative container mx-auto px-4 sm:px-6 lg:px-8">
+        <Breadcrumb items={[{ label: 'Investor Relations' }]} />
+        <h1 class="text-5xl md:text-6xl font-bold text-white mt-8">
+          Invest in the <span class="text-zuma-gold">Future</span>
+        </h1>
+        <p class="text-xl text-white/80 max-w-2xl mt-6">
+          Join us in transforming Nigeria's agricultural landscape.
+          Strong fundamentals, sustainable growth, measurable impact.
+        </p>
+      </div>
+    </section>
+
+    <!-- Investment Highlights -->
+    <Section>
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-zuma-navy mb-4">Investment Highlights</h2>
+        <p class="text-zuma-navy/70">Strong performance, sustainable growth</p>
+      </div>
+
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+        {highlights.map((item) => (
+          <GlassCard class="text-center">
+            <div class="text-4xl font-bold text-zuma-gold mb-1">{item.value}</div>
+            <div class="text-sm text-zuma-navy font-semibold">{item.label}</div>
+            <div class="text-xs text-zuma-navy/50">{item.period}</div>
+          </GlassCard>
+        ))}
+      </div>
+    </Section>
+
+    <!-- Investment Thesis -->
+    <Section class="bg-zuma-sky/30">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <h2 class="text-4xl font-bold text-zuma-navy mb-6">
+            Why Invest in <span class="text-zuma-gold">Zuma Agro</span>?
+          </h2>
+
+          <div class="space-y-6">
+            <div class="flex items-start space-x-4">
+              <div class="w-8 h-8 rounded-full bg-zuma-gold text-white flex items-center justify-center font-bold flex-shrink-0">1</div>
+              <div>
+                <h3 class="font-bold text-zuma-navy mb-1">Massive Market Opportunity</h3>
+                <p class="text-zuma-navy/70">Nigeria's $100B agricultural market with significant untapped potential.</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-4">
+              <div class="w-8 h-8 rounded-full bg-zuma-gold text-white flex items-center justify-center font-bold flex-shrink-0">2</div>
+              <div>
+                <h3 class="font-bold text-zuma-navy mb-1">Proven Business Model</h3>
+                <p class="text-zuma-navy/70">Vertical integration ensures quality control and margin protection.</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-4">
+              <div class="w-8 h-8 rounded-full bg-zuma-gold text-white flex items-center justify-center font-bold flex-shrink-0">3</div>
+              <div>
+                <h3 class="font-bold text-zuma-navy mb-1">ESG Leadership</h3>
+                <p class="text-zuma-navy/70">Sustainable practices aligned with global investment criteria.</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-4">
+              <div class="w-8 h-8 rounded-full bg-zuma-gold text-white flex items-center justify-center font-bold flex-shrink-0">4</div>
+              <div>
+                <h3 class="font-bold text-zuma-navy mb-1">Experienced Team</h3>
+                <p class="text-zuma-navy/70">Leadership with decades of combined agribusiness experience.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative">
+          <img src="/images/investment-chart.jpg" alt="Growth Chart" class="rounded-2xl shadow-xl" />
+        </div>
+      </div>
+    </Section>
+
+    <!-- Governance -->
+    <Section id="governance">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-zuma-navy mb-4">Corporate Governance</h2>
+        <p class="text-zuma-navy/70">Strong leadership, transparent practices</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {governance.map((member) => (
+          <GlassCard class="text-center">
+            <div class="w-20 h-20 mx-auto rounded-full bg-zuma-navy/10 flex items-center justify-center text-3xl mb-4">
+              {member.name.charAt(0)}
+            </div>
+            <h3 class="font-bold text-zuma-navy">{member.name}</h3>
+            <p class="text-zuma-gold text-sm font-semibold">{member.role}</p>
+            <p class="text-zuma-navy/60 text-sm mt-2">{member.bio}</p>
+          </GlassCard>
+        ))}
+      </div>
+    </Section>
+
+    <!-- Documents -->
+    <Section class="bg-zuma-navy text-white">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold mb-4">Financial Documents</h2>
+        <p class="text-white/70">Download latest reports and presentations</p>
+      </div>
+
+      <div class="max-w-3xl mx-auto space-y-4">
+        {documents.map((doc) => (
+          <div class="flex items-center justify-between p-4 bg-white/10 rounded-xl hover:bg-white/20 transition-colors">
+            <div class="flex items-center space-x-4">
+              <div class="w-10 h-10 rounded-lg bg-zuma-gold/20 flex items-center justify-center">
+                <svg class="w-5 h-5 text-zuma-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-semibold">{doc.title}</h4>
+                <p class="text-white/50 text-sm">{doc.type} • {doc.size} • {doc.date}</p>
+              </div>
+            </div>
+            <Button href="#" variant="outline" size="sm" class="border-white/30 text-white hover:bg-white hover:text-zuma-navy">
+              Download
+            </Button>
+          </div>
+        ))}
+      </div>
+    </Section>
+
+    <!-- Contact CTA -->
+    <Section>
+      <div class="text-center max-w-2xl mx-auto">
+        <h2 class="text-3xl font-bold text-zuma-navy mb-4">Investor Inquiries</h2>
+        <p class="text-zuma-navy/70 mb-8">
+          For detailed financial information, investor presentations, or to schedule a meeting
+          with our investor relations team.
+        </p>
+        <Button href="mailto:investors@zumaagro.com" variant="primary" size="lg">
+          Contact Investor Relations
+        </Button>
+      </div>
+    </Section>
+  </main>
+
+  <Footer />
+</BaseLayout>

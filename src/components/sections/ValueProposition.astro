@@ -1,0 +1,74 @@
+---
+import Section from '../ui/Section.astro';
+import GlassCard from '../ui/GlassCard.astro';
+
+const values = [
+  {
+    title: 'Integrated Operations',
+    description: 'From breeding to processing, we control the entire value chain for quality assurance.',
+    icon: '🔗',
+    color: 'bg-zuma-gold/10 text-zuma-gold',
+  },
+  {
+    title: 'Sustainable Practices',
+    description: 'ESG-focused operations that protect the environment while maximizing yields.',
+    icon: '🌱',
+    color: 'bg-zuma-forest/10 text-zuma-forest',
+  },
+  {
+    title: 'Nationwide Reach',
+    description: 'Strategic locations across Nigeria ensuring efficient distribution and market access.',
+    icon: '🇳🇬',
+    color: 'bg-zuma-navy/10 text-zuma-navy',
+  },
+  {
+    title: 'Export Excellence',
+    description: 'Meeting international standards for premium agricultural exports worldwide.',
+    icon: '🌍',
+    color: 'bg-zuma-earth/10 text-zuma-earth',
+  },
+];
+---
+
+<Section id="values" class="bg-zuma-sky/30">
+  <div class="text-center mb-16">
+    <span class="inline-block px-4 py-1 bg-zuma-gold/10 text-zuma-gold text-sm font-semibold rounded-full mb-4">
+      Why Choose Zuma Agro
+    </span>
+    <h2 class="text-4xl md:text-5xl font-bold text-zuma-navy mb-6">
+      Built for Scale.<br />
+      <span class="text-zuma-forest">Designed for Impact.</span>
+    </h2>
+    <p class="text-lg text-zuma-navy/70 max-w-2xl mx-auto">
+      Our integrated model combines traditional agricultural wisdom with modern
+      technology to deliver consistent, high-quality produce.
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    {values.map((value, index) => (
+      <GlassCard
+        class="group scroll-reveal"
+        style={`animation-delay: ${index * 0.1}s`}
+      >
+        <div class:list={['w-14 h-14 rounded-xl flex items-center justify-center text-2xl mb-4', value.color]}>
+          {value.icon}
+        </div>
+        <h3 class="text-xl font-bold text-zuma-navy mb-3 group-hover:text-zuma-gold transition-colors">
+          {value.title}
+        </h3>
+        <p class="text-zuma-navy/70 leading-relaxed">
+          {value.description}
+        </p>
+      </GlassCard>
+    ))}
+  </div>
+</Section>
+
+<script>
+  import { scrollReveal } from '../../utils/animations';
+
+  document.querySelectorAll('.scroll-reveal').forEach((el) => {
+    scrollReveal(el);
+  });
+</script>

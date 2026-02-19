@@ -1,0 +1,41 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  speed?: number;
+  class?: string;
+}
+
+const { src, alt, speed = 0.5, class: className = '' } = Astro.props;
+---
+
+<div class={`parallax-container overflow-hidden ${className}`}>
+  <img
+    src={src}
+    alt={alt}
+    class="parallax-image w-full h-full object-cover"
+    data-speed={speed}
+  />
+</div>
+
+<script>
+  import { gsap } from 'gsap'
+  import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+  gsap.registerPlugin(ScrollTrigger)
+
+  document.querySelectorAll('.parallax-image').forEach((img) => {
+    const speed = parseFloat(img.dataset.speed) || 0.5
+
+    gsap.to(img, {
+      yPercent: speed * 30,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: img.parentElement,
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: true,
+      },
+    })
+  })
+</script>

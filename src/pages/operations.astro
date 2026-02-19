@@ -1,0 +1,147 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import Section from '../components/ui/Section.astro';
+import Breadcrumb from '../components/ui/Breadcrumb.astro';
+import Button from '../components/ui/Button.astro';
+
+const divisions = [
+  {
+    id: 'livestock',
+    title: 'Livestock Division',
+    subtitle: 'Premium Cattle Ranching',
+    description: 'Our livestock division manages over 50,000 head of cattle across 12 strategically located ranches.',
+    image: '/images/operations-livestock.jpg',
+    stats: [
+      { label: 'Cattle Managed', value: '50,000+' },
+      { label: 'Ranch Locations', value: '12' },
+      { label: 'Breed Varieties', value: '8' },
+      { label: 'Annual Calving', value: '15,000+' },
+    ],
+    features: ['Artificial Insemination', 'Veterinary Services', 'Feedlot Operations', 'Breeding Programs'],
+  },
+  {
+    id: 'grains',
+    title: 'Grains Division',
+    subtitle: 'Sustainable Crop Production',
+    description: 'Large-scale cultivation of maize, sorghum, soybeans, and other staple crops using precision agriculture.',
+    image: '/images/operations-grains.jpg',
+    stats: [
+      { label: 'Hectares Cultivated', value: '10,000+' },
+      { label: 'Annual Yield', value: '50,000 tons' },
+      { label: 'Crop Varieties', value: '6' },
+      { label: 'Irrigation Coverage', value: '40%' },
+    ],
+    features: ['Precision Agriculture', 'Irrigation Systems', 'Storage Facilities', 'Quality Testing'],
+  },
+  {
+    id: 'apiculture',
+    title: 'Apiculture Division',
+    subtitle: 'Honey Production & Pollination',
+    description: 'Sustainable beekeeping operations supporting crop pollination and producing premium honey.',
+    image: '/images/operations-apiculture.jpg',
+    stats: [
+      { label: 'Beehives', value: '5,000+' },
+      { label: 'Annual Honey', value: '100 tons' },
+      { label: 'Pollination Area', value: '2,000 ha' },
+      { label: 'Beekeepers', value: '50+' },
+    ],
+    features: ['Honey Extraction', 'Pollination Services', 'Bee Health', 'Wax Products'],
+  },
+  {
+    id: 'processing',
+    title: 'Processing Division',
+    subtitle: 'Value-Added Facilities',
+    description: 'State-of-the-art processing plants ensuring quality from farm to market with full traceability.',
+    image: '/images/operations-processing.jpg',
+    stats: [
+      { label: 'Daily Capacity', value: '100 tons' },
+      { label: 'Product Lines', value: '20+' },
+      { label: 'Certifications', value: '5' },
+      { label: 'Cold Storage', value: '5,000 tons' },
+    ],
+    features: ['Slaughterhouse', 'Packaging', 'Cold Chain', 'Quality Control'],
+  },
+];
+---
+
+<BaseLayout title="Operations | Zuma Agro">
+  <Header />
+
+  <main>
+    <!-- Hero -->
+    <section class="relative h-[50vh] flex items-center bg-zuma-navy">
+      <div class="absolute inset-0">
+        <img src="/images/operations-hero.jpg" alt="Operations" class="w-full h-full object-cover opacity-40" />
+      </div>
+      <div class="relative container mx-auto px-4 sm:px-6 lg:px-8">
+        <Breadcrumb items={[{ label: 'Operations' }]} />
+        <h1 class="text-5xl md:text-6xl font-bold text-white mt-8">
+          Our <span class="text-zuma-gold">Operations</span>
+        </h1>
+      </div>
+    </section>
+
+    <!-- Division Navigation -->
+    <div class="sticky top-20 bg-white border-b z-30">
+      <div class="container mx-auto px-4">
+        <div class="flex space-x-8 overflow-x-auto py-4">
+          {divisions.map((div) => (
+            <a
+              href={`#${div.id}`}
+              class="text-sm font-semibold text-zuma-navy/60 hover:text-zuma-gold whitespace-nowrap transition-colors"
+            >
+              {div.title}
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Divisions -->
+    {divisions.map((division, index) => (
+      <Section id={division.id} class={index % 2 === 1 ? 'bg-zuma-sky/30' : ''}>
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class={index % 2 === 1 ? 'lg:order-2' : ''}>
+            <span class="text-zuma-gold font-semibold tracking-wider uppercase text-sm">{division.subtitle}</span>
+            <h2 class="text-4xl font-bold text-zuma-navy mt-4 mb-6">{division.title}</h2>
+            <p class="text-lg text-zuma-navy/70 leading-relaxed mb-8">{division.description}</p>
+
+            <div class="grid grid-cols-2 gap-4 mb-8">
+              {division.features.map((feature) => (
+                <div class="flex items-center space-x-2">
+                  <div class="w-2 h-2 bg-zuma-gold rounded-full"></div>
+                  <span class="text-zuma-navy/70">{feature}</span>
+                </div>
+              ))}
+            </div>
+
+            <Button href={`/contact`} variant="primary">
+              Learn More
+            </Button>
+          </div>
+
+          <div class={index % 2 === 1 ? 'lg:order-1' : ''}>
+            <div class="relative rounded-2xl overflow-hidden">
+              <img src={division.image} alt={division.title} class="w-full aspect-[4/3] object-cover" />
+
+              <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-zuma-navy to-transparent p-6">
+                <div class="grid grid-cols-2 gap-4">
+                  {division.stats.map((stat) => (
+                    <div class="text-white">
+                      <div class="text-2xl font-bold text-zuma-gold">{stat.value}</div>
+                      <div class="text-sm text-white/70">{stat.label}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Section>
+    ))}
+  </main>
+
+  <Footer />
+</BaseLayout>

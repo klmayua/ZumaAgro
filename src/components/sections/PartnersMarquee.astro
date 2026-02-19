@@ -1,0 +1,42 @@
+---
+import Section from '../ui/Section.astro';
+
+const testimonials = [
+  {
+    quote: "Zuma Agro represents the future of Nigerian agriculture. Their integrated approach sets a new standard for the industry.",
+    author: "Dr. Akinwumi Adesina",
+    role: "Former Minister of Agriculture",
+  },
+  {
+    quote: "Working with Zuma Agro has transformed our supply chain. Their consistency and quality are unmatched.",
+    author: "Olayinka Johnson",
+    role: "CEO, Premium Foods Ltd",
+  },
+];
+---
+
+<Section class="bg-zuma-navy text-white overflow-hidden">
+  <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
+    Trusted by <span class="text-zuma-gold">Industry Leaders</span>
+  </h2>
+
+  <div class="grid md:grid-cols-2 gap-8">
+    {testimonials.map((t) => (
+      <div class="glass-dark rounded-2xl p-8 relative">
+        <svg class="absolute top-6 left-6 w-10 h-10 text-zuma-gold/30" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+        </svg>
+        <p class="text-lg text-white/90 mb-6 pl-12 italic">"{t.quote}"</p>
+        <div class="flex items-center">
+          <div class="w-12 h-12 rounded-full bg-zuma-gold/20 flex items-center justify-center text-xl">
+            {t.author.charAt(0)}
+          </div>
+          <div class="ml-4">
+            <p class="font-semibold text-white">{t.author}</p>
+            <p class="text-white/60 text-sm">{t.role}</p>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</Section>

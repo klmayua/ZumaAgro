@@ -1,0 +1,106 @@
+---
+import Button from '../ui/Button.astro';
+---
+
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+  <!-- Background Video/Image -->
+  <div class="absolute inset-0 z-0">
+    <video
+      autoplay
+      muted
+      loop
+      playsinline
+      class="w-full h-full object-cover"
+      poster="/images/hero-poster.jpg"
+    >
+      <source src="/videos/hero-aerial.mp4" type="video/mp4" />
+    </video>
+    <!-- Gradient Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-b from-zuma-navy/60 via-zuma-navy/40 to-zuma-navy/80"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center text-white pt-20">
+    <!-- Animated Badge -->
+    <div class="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full mb-8 animate-fade-in">
+      <span class="w-2 h-2 bg-zuma-gold rounded-full mr-2 animate-pulse"></span>
+      <span class="text-sm font-medium">Nigeria's Premier Agro-Industrial Platform</span>
+    </div>
+
+    <!-- Hero Text -->
+    <h1 class="hero-title text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none mb-6">
+      <span class="block overflow-hidden">
+        <span class="inline-block hero-line">Transforming</span>
+      </span>
+      <span class="block overflow-hidden">
+        <span class="inline-block hero-line text-zuma-gold">Agriculture</span>
+      </span>
+    </h1>
+
+    <p class="text-xl md:text-2xl text-white/80 max-w-2xl mx-auto mb-10 hero-subtitle opacity-0">
+      Building Nigeria's food security through integrated ranching,
+      sustainable farming, and strategic agro-industrial operations.
+    </p>
+
+    <!-- CTA Buttons -->
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 hero-ctas opacity-0">
+      <Button href="/about" variant="primary" size="lg" class="min-w-[200px]">
+        Discover Our Story
+      </Button>
+      <Button href="/operations" variant="outline" size="lg" class="min-w-[200px] border-white text-white hover:bg-white hover:text-zuma-navy">
+        Explore Operations
+      </Button>
+    </div>
+  </div>
+
+  <!-- Scroll Indicator -->
+  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 scroll-indicator opacity-0">
+    <div class="flex flex-col items-center text-white/60">
+      <span class="text-xs uppercase tracking-widest mb-2">Scroll</span>
+      <div class="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2">
+        <div class="w-1.5 h-3 bg-zuma-gold rounded-full animate-bounce"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from 'gsap';
+
+  // Hero entrance animation
+  const tl = gsap.timeline({ delay: 0.5 });
+
+  tl.to('.hero-line', {
+    y: 0,
+    opacity: 1,
+    duration: 1,
+    stagger: 0.2,
+    ease: 'power3.out',
+    from: { y: 100, opacity: 0 }
+  })
+  .to('.hero-subtitle', {
+    opacity: 1,
+    y: 0,
+    duration: 0.8,
+    ease: 'power3.out',
+    from: { y: 30 }
+  }, '-=0.5')
+  .to('.hero-ctas', {
+    opacity: 1,
+    y: 0,
+    duration: 0.8,
+    ease: 'power3.out',
+    from: { y: 30 }
+  }, '-=0.5')
+  .to('.scroll-indicator', {
+    opacity: 1,
+    duration: 0.5
+  }, '-=0.3');
+</script>
+
+<style>
+  .hero-line {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+</style>

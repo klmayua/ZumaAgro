@@ -1,0 +1,23 @@
+---
+---
+
+<div class="page-transition fixed inset-0 z-[100] pointer-events-none">
+  <div class="transition-panel absolute inset-0 bg-zuma-gold transform translate-y-full"></div>
+</div>
+
+<script>
+  import { gsap } from 'gsap'
+
+  // Page transition animation
+  const panel = document.querySelector('.transition-panel')
+  
+  if (panel) {
+    // Enter animation on page load
+    gsap.to(panel, {
+      y: '-100%',
+      duration: 0.5,
+      ease: 'power3.inOut',
+      delay: 0.2,
+    })
+  }
+</script>

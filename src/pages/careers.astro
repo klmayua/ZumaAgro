@@ -1,0 +1,181 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import Section from '../components/ui/Section.astro';
+import Breadcrumb from '../components/ui/Breadcrumb.astro';
+import GlassCard from '../components/ui/GlassCard.astro';
+import Button from '../components/ui/Button.astro';
+
+const benefits = [
+  { title: 'Competitive Salary', icon: '💰', description: 'Market-leading compensation packages' },
+  { title: 'Health Insurance', icon: '🏥', description: 'Comprehensive medical coverage for you and family' },
+  { title: 'Professional Growth', icon: '📈', description: 'Training, mentorship, and career advancement' },
+  { title: 'Work-Life Balance', icon: '⚖️', description: 'Flexible working arrangements' },
+  { title: 'Housing Allowance', icon: '🏠', description: 'Support for accommodation near work sites' },
+  { title: 'Performance Bonus', icon: '🎯', description: 'Annual bonuses based on performance' },
+];
+
+const openings = [
+  {
+    title: 'Livestock Manager',
+    department: 'Operations',
+    location: 'Niger State',
+    type: 'Full-time',
+    description: 'Oversee daily ranching operations and herd management.',
+  },
+  {
+    title: 'Agricultural Engineer',
+    department: 'Technical',
+    location: 'Abuja',
+    type: 'Full-time',
+    description: 'Design and maintain irrigation and processing systems.',
+  },
+  {
+    title: 'Export Coordinator',
+    department: 'Sales',
+    location: 'Lagos',
+    type: 'Full-time',
+    description: 'Manage international shipments and customs documentation.',
+  },
+  {
+    title: 'Veterinarian',
+    department: 'Operations',
+    location: 'Kaduna',
+    type: 'Full-time',
+    description: 'Provide healthcare and breeding support for livestock.',
+  },
+  {
+    title: 'Data Analyst',
+    department: 'Technology',
+    location: 'Remote',
+    type: 'Full-time',
+    description: 'Analyze agricultural data to optimize operations.',
+  },
+];
+
+const cultureImages = [
+  '/images/culture-1.jpg',
+  '/images/culture-2.jpg',
+  '/images/culture-3.jpg',
+  '/images/culture-4.jpg',
+];
+---
+
+<BaseLayout title="Careers | Zuma Agro">
+  <Header />
+
+  <main>
+    <!-- Hero -->
+    <section class="relative h-[50vh] flex items-center bg-zuma-navy">
+      <div class="absolute inset-0">
+        <img src="/images/careers-hero.jpg" alt="Careers" class="w-full h-full object-cover opacity-40" />
+      </div>
+      <div class="relative container mx-auto px-4 sm:px-6 lg:px-8">
+        <Breadcrumb items={[{ label: 'Careers' }]} />
+        <h1 class="text-5xl md:text-6xl font-bold text-white mt-8">
+          Join Our <span class="text-zuma-gold">Team</span>
+        </h1>
+        <p class="text-xl text-white/80 max-w-2xl mt-6">
+          Be part of Nigeria's agricultural transformation.
+          Grow your career while making a real impact.
+        </p>
+      </div>
+    </section>
+
+    <!-- Culture Gallery -->
+    <Section>
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-zuma-navy mb-4">Our Culture</h2>
+        <p class="text-zuma-navy/70">A workplace that values innovation, integrity, and impact</p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {cultureImages.map((img, index) => (
+          <div class="relative aspect-square rounded-xl overflow-hidden group">
+            <img src={img} alt={`Culture ${index + 1}`} class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          </div>
+        ))}
+      </div>
+    </Section>
+
+    <!-- Benefits -->
+    <Section class="bg-zuma-sky/30">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-zuma-navy mb-4">Why Work With Us</h2>
+        <p class="text-zuma-navy/70">Benefits designed for your growth and well-being</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {benefits.map((benefit) => (
+          <GlassCard class="text-center">
+            <div class="text-4xl mb-4">{benefit.icon}</div>
+            <h3 class="text-lg font-bold text-zuma-navy mb-2">{benefit.title}</h3>
+            <p class="text-zuma-navy/70 text-sm">{benefit.description}</p>
+          </GlassCard>
+        ))}
+      </div>
+    </Section>
+
+    <!-- Job Openings -->
+    <Section id="openings">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-zuma-navy mb-4">Open Positions</h2>
+        <p class="text-zuma-navy/70">Find your next opportunity</p>
+      </div>
+
+      <div class="max-w-4xl mx-auto space-y-4">
+        {openings.map((job) => (
+          <GlassCard class="group hover:shadow-lg transition-all">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <div>
+                <h3 class="text-xl font-bold text-zuma-navy group-hover:text-zuma-gold transition-colors">
+                  {job.title}
+                </h3>
+                <div class="flex flex-wrap gap-2 mt-2">
+                  <span class="px-2 py-1 bg-zuma-navy/5 text-zuma-navy/70 text-xs rounded">{job.department}</span>
+                  <span class="px-2 py-1 bg-zuma-navy/5 text-zuma-navy/70 text-xs rounded">{job.location}</span>
+                  <span class="px-2 py-1 bg-zuma-gold/10 text-zuma-gold text-xs rounded">{job.type}</span>
+                </div>
+                <p class="text-zuma-navy/70 mt-3 text-sm">{job.description}</p>
+              </div>
+              <Button href="mailto:careers@zumaagro.com" variant="primary" size="sm">
+                Apply Now
+              </Button>
+            </div>
+          </GlassCard>
+        ))}
+      </div>
+
+      <div class="text-center mt-12">
+        <p class="text-zuma-navy/70 mb-4">Don't see a position that fits?</p>
+        <Button href="mailto:careers@zumaagro.com" variant="outline">
+          Send General Application
+        </Button>
+      </div>
+    </Section>
+
+    <!-- Employee Testimonial -->
+    <Section class="bg-zuma-navy text-white">
+      <div class="max-w-3xl mx-auto text-center">
+        <svg class="w-16 h-16 text-zuma-gold/30 mx-auto mb-6" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+        </svg>
+        <blockquote class="text-xl italic text-white/90 mb-6">
+          "Working at Zuma Agro has been transformative. I've grown from a junior agronomist to leading a team of 50. The company invests in its people."
+        </blockquote>
+        <div class="flex items-center justify-center space-x-4">
+          <div class="w-12 h-12 rounded-full bg-zuma-gold/20 flex items-center justify-center text-xl">
+            O
+          </div>
+          <div class="text-left">
+            <p class="font-semibold">Olumide Okonkwo</p>
+            <p class="text-white/60 text-sm">Senior Agronomist, 5 years</p>
+          </div>
+        </div>
+      </div>
+    </Section>
+  </main>
+
+  <Footer />
+</BaseLayout>

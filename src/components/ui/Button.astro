@@ -1,0 +1,54 @@
+---
+interface Props {
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
+  size?: 'sm' | 'md' | 'lg';
+  href?: string;
+  type?: 'button' | 'submit';
+  class?: string;
+  magnetic?: boolean;
+}
+
+const {
+  variant = 'primary',
+  size = 'md',
+  href,
+  type = 'button',
+  class: className = '',
+  magnetic = false,
+} = Astro.props;
+
+const baseClasses = 'relative inline-flex items-center justify-center font-semibold transition-all duration-300 overflow-hidden group';
+
+const variants = {
+  primary: 'bg-zuma-gold text-zuma-navy hover:bg-zuma-forest hover:text-white',
+  secondary: 'bg-zuma-navy text-white hover:bg-zuma-gold hover:text-zuma-navy',
+  outline: 'border-2 border-zuma-navy text-zuma-navy hover:bg-zuma-navy hover:text-white',
+  ghost: 'text-zuma-navy hover:bg-zuma-navy/5',
+};
+
+const sizes = {
+  sm: 'px-4 py-2 text-sm rounded-lg',
+  md: 'px-6 py-3 text-base rounded-xl',
+  lg: 'px-8 py-4 text-lg rounded-xl',
+};
+
+const classes = `${baseClasses} ${variants[variant]} ${sizes[size]} ${magnetic ? 'magnetic-btn' : ''} ${className}`;
+---
+
+{href ? (
+  <a href={href} class={classes}>
+    <span class="relative z-10"><slot /></span>
+    <span class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+  </a>
+) : (
+  <button type={type} class={classes}>
+    <span class="relative z-10"><slot /></span>
+    <span class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+  </button>
+)}
+
+<style>
+  .magnetic-btn {
+    transition: transform 0.2s ease-out;
+  }
+</style>
