@@ -13,33 +13,37 @@ const { class: className = '', animate = false, variant = 'full' } = Astro.props
 {variant === 'full' && (
   <svg
     class={`logo-svg ${className}`}
-    viewBox="0 0 280 60"
+    viewBox="0 0 320 60"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     aria-label="Zuma Agro Logo"
   >
+    <!-- Green leaf icon -->
+    <path d="M20 50C20 50 5 40 5 25C5 12 15 5 25 5C30 5 35 8 38 12C38 8 42 5 48 5C58 5 65 15 65 25C65 40 50 50 50 50H20Z" fill="#49922E"/>
+    <path d="M35 25C35 20 40 15 48 15C55 15 60 22 60 30C60 40 48 48 40 48C35 48 32 45 32 42C32 45 35 48 40 48C48 48 60 40 60 30C60 20 48 10 35 10C28 10 22 15 22 22C22 28 28 32 35 32C38 32 40 30 40 28C40 25 38 23 35 23C28 23 22 28 22 35C22 42 30 48 38 48C45 48 50 42 50 35C50 28 45 23 38 23C35 23 33 25 33 27C33 30 35 32 38 32C42 32 45 28 45 25C45 20 42 17 38 17C32 17 28 22 28 28C28 33 32 38 38 38C43 38 47 33 47 28C47 22 43 17 38 17" fill="#2E2E2E"/>
+    
     <!-- ZUMA Text -->
     <text
-      x="5"
-      y="45"
-      class="logo-text-zuma"
-      fill="#0A1628"
+      x="75"
+      y="43"
+      class="logo-text"
+      fill="#2E2E2E"
       font-family="Satoshi, sans-serif"
       font-weight="800"
-      font-size="48"
+      font-size="44"
     >
       ZUMA
     </text>
 
-    <!-- AGRO text -->
+    <!-- AGRO text (same color as ZUMA) -->
     <text
-      x="135"
-      y="45"
-      class="logo-text-agro"
-      fill="#000000"
+      x="200"
+      y="43"
+      class="logo-text"
+      fill="#2E2E2E"
       font-family="Satoshi, sans-serif"
       font-weight="800"
-      font-size="48"
+      font-size="44"
     >
       AGRO
     </text>
@@ -75,7 +79,7 @@ const { class: className = '', animate = false, variant = 'full' } = Astro.props
   }
 
   /* Hover effect */
-  .logo-svg:hover .logo-text-agro {
+  .logo-svg:hover .logo-text {
     @apply text-zuma-forest;
     transition: fill 0.3s ease;
   }
